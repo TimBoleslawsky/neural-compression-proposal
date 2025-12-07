@@ -1,0 +1,23 @@
+\section{Goals and Challenges}\label{sec:goals-and-challenges}
+
+\textbf{Goals:} In the proposed work, the goal is to determine whether using tokenization as an alternative to common transformation and quantization methods enables the subsequent entropy modeling to use a smaller architecture while still achieving similar results in compression rate and utility to those of traditional neural compression implementations. Instead of compressing raw sensor values, this approach would aim to learn a discrete vocabulary of prototypical temporal patterns that are maximally informative for downstream tasks. This approach is expected to give us two distinct advantages: 
+
+\begin{itemize}
+    \item better computational efficiency compared to RNN- and transformer-based neural compression methods.
+    \item an interpretable intermediate layer of tokens instead of continuous values.
+\end{itemize}
+
+To achieve the proposed goal, the main focus of the project will be to develop a compression framework for time-series data using a learned tokenizer and lightweight entropy model. This project is expected to present the difference in predictive utility between models trained on data compressed using neural compression with tokenized inputs, data compressed using traditional neural compression techniques and uncompressed data. In addition, the project also aims to present the difference in computational cost and number of parameters for each approach. The expectation is that the approach which utilizes a small tokenizing module will have a smaller memory footprint and lower latency while still producing a compressed representation which offers comparable predictive utility. 
+
+\textbf{Challenges:} Three main challenges are expected to be faced in this project. First, there is a noticeable lack of established learned compressors for time-series data. This project relies on an established neural compression method to compare the proposed new approach against. Such out-of-the-box solutions exist for image data, e.g., CompressAI \citet{bégaint2020}, but available neural compression frameworks for time-series data are usually very specialized and not easily reproducible, e.g.~\citet{zheng2023, liu2024deepdictdeeplearningbased}. Second, the aim is to implement a compression framework that will generalize beyond a specific downstream ML task and be applicable to a broader field such as all anomaly detection tasks. This introduces two separate challenges: the definition of the general but defining characteristics of such tasks, and the appropriate fine-tuning of the tokenizer. 
+
+\textbf{Approach:} To approach the goals for this project, data comprised of available automotive sensor and telemetry test-fleet data supporting tasks such as predictive maintenance and anomaly detection will be used. Alternatively, publicly available datasets such as the SCANIA Component X Dataset can be used \citep{kharazian2025}. We define the following tasks in order to achieve the aforementioned goals:
+
+\begin{itemize}
+    \item \textbf{Task 1:} Train a downstream ML model, representative of a defined subset of industry-relevant tasks, on uncompressed data to quantify loss in predictive utility.
+    \item \textbf{Task 2:} Implement a baseline model based on established neural compression frameworks such as CompressAI \citep{bégaint2020}.
+    \item \textbf{Task 3:} Develop a learnable tokenization module that discretizes data into semantically meaningful units optimized for downstream tasks.
+    \item \textbf{Task 4:} Develop lightweight entropy modeling and coding schemes tailored to the tokenized representations.
+    \item \textbf{Task 5:} Train the model from Task 1 on the compressed data using both compression methods. 
+    \item \textbf{Task 6:} Evaluate baseline model and proposed tokenization + lightweight entropy model framework based on rate-utility and computational efficiency.
+\end{itemize}
