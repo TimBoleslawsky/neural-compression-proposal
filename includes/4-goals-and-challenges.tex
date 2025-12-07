@@ -33,5 +33,21 @@ The main goal of this paper will be to develop a compression framework for time-
 % \item Define how computational efficiency will be measured (e.g., inference time, model size).
 % \item Agree on a subset of the available automotive data. 
 
+\subsection{Approach}
+\begin{itemize}
+    \item \textbf{Dataset:} Use available automotive sensor and telemetry test-fleet data supporting tasks such as predictive maintenance and anomaly detection.
+    \item \textbf{Task 1:} Train downstream ML models on uncompressed data to quantify loss in predictive utility.
+    \item \textbf{Task 2:} Implement established neural compression methods such as CompressAI as baselines, measuring rate-utility trade-offs.
+    \item \textbf{Task 3:} Develop a learnable tokenization module that discretizes data into semantically meaningful units optimized for downstream tasks.
+    \begin{itemize}
+        \item Design tokenization schemes for automotive sensor data (time series).
+        \item Define ML-aware utility metrics that correlate compression rate with downstream model performance (e.g., accuracy, F1-score).
+    \end{itemize}
+    \item \textbf{Task 4:} Evaluate and compare the methods.
+    \begin{itemize}
+        \item Measure rate-utility curves across the methods.
+        \item Evaluate trade-offs between computational efficiency.
+    \end{itemize}
+\end{itemize}
 
 \citep{key}
