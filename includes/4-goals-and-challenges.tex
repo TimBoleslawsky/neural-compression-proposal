@@ -1,0 +1,53 @@
+\section{Goals and Challenges}\label{sec:goals-and-challenges}
+
+% Justification of tokenization as a neural compression strategy.
+In this paper, the goal will be to determine weather using tokenization as a transformation step can allow the subsequent entropy modeling to be done using a smaller architecture while still achieving similar results to traditional neural compression implementations. Tokenization is traditionally understood as the mapping of high-dimensional, continuous inputs into a sequence of discrete symbols drawn from a finite vocabulary \citep{grefenstette1999}. Tokenization therefore serves as a form of simplified representation of the data; it reduces dimensionality, constrains representations to a compact code space, and can be made task-aware so that the retained tokens are maximally useful for prediction or classification. Instead of compressing raw sensor values, this approach would aim to learn a discrete vocabulary of prototypical temporal patterns that are maximally informative for downstream tasks. This approach is expected to give us two distinct advantages: 
+
+\begin{itemize}
+    \item better computational efficiency compared to RNN and transformer based neural compression methods.
+    \item an interpretable intermediate layer of tokens instead of continuous values.
+\end{itemize}
+% what are similar results? 
+% what is a smaller architecture?
+
+\subsection{Goal}
+The main goal of this paper will be to develop a compression framework for time-series data using a learned tokenizer and lightweight entropy modeler. This paper is expected to present the difference in predictive utility between data compressed using a neural compression with tokenized inputs, traditional neural compression and no compression. In addition, the paper also aims to present the difference in computational cost and number of parameters for each approach. The expectation is that the approach which utilizes a small tokenizing module will have a small memory footprint and low latency while still producing a compressed representation which offers comparable predictive utility. 
+
+\subsection{Sub-Goals}
+\begin{itemize}
+        \item Produce a lightweight task-aware tokenization framework for time series data.
+        \item Quantify the loss in predictive utility when training ML models on uncompressed, tokenized and compressed data.
+        \item Measure the computational cost of the system in terms of latency and peak memory usage. % I think these are the most relevant metrics in our case, might need a source for it though
+        \item Measure the rate-utility tradeoff of the implementation in regards to the relevant ML task.
+\end{itemize}
+
+\subsection{Challenges}
+\begin{itemize}
+        \item Lack of established learned compressors for time-series data
+        \item Difficulty optimizing rate-distortion trade-off
+        \item Generalizing the results over heterogenous sensors
+\end{itemize}
+
+% Old Challenges
+% \item Agree on a downstream ML task or task type (e.g., predictive maintenance, anomaly detection).
+% \item Define how computational efficiency will be measured (e.g., inference time, model size).
+% \item Agree on a subset of the available automotive data. 
+
+\subsection{Approach}
+\begin{itemize}
+    \item \textbf{Dataset:} Use available automotive sensor and telemetry test-fleet data supporting tasks such as predictive maintenance and anomaly detection.
+    \item \textbf{Task 1:} Train downstream ML models on uncompressed data to quantify loss in predictive utility.
+    \item \textbf{Task 2:} Implement established neural compression methods such as CompressAI as baselines, measuring rate-utility trade-offs.
+    \item \textbf{Task 3:} Develop a learnable tokenization module that discretizes data into semantically meaningful units optimized for downstream tasks.
+    \begin{itemize}
+        \item Design tokenization schemes for automotive sensor data (time series).
+        \item Define ML-aware utility metrics that correlate compression rate with downstream model performance (e.g., accuracy, F1-score).
+    \end{itemize}
+    \item \textbf{Task 4:} Evaluate and compare the methods.
+    \begin{itemize}
+        \item Measure rate-utility curves across the methods.
+        \item Evaluate trade-offs between computational efficiency.
+    \end{itemize}
+\end{itemize}
+
+\citep{key}
