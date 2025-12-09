@@ -249,7 +249,7 @@ Takeaway: Neural compression for time-series sensor data preserves bandwidth but
 
 ### 1. Uncertainty / novelty / utility-aware adaptive telemetry
 
-An emerging direction is logging based not just on threshold triggers but on *informational value* — e.g. whether the current data point is uncertain, novel, or “interesting” relative to a model’s expectations. Some time-series anomaly detection research integrates uncertainty quantification (aleatoric + epistemic) to decide where to pay more attention or log more finely (e.g., Wiessner et al. in “Uncertainty-Aware Time Series Anomaly Detection”). ([MDPI][5])
+An emerging direction is logging based not just on threshold triggers but on *informational value* — e.g. whether the current data point is uncertain, novel, or “interesting” relative to a model’s expectations. Some time-series anomaly detection research integrates uncertainty quantification (aleatoric + epistemic) to decide where to pay more attention or log more finely (e.g., Wiessner et al. in “Uncertainty-Aware time-series Anomaly Detection”). ([MDPI][5])
 
 While that work is more general, the principle applies: you could imagine an in-vehicle module that logs full sensor frames only when model uncertainty is high, otherwise logs compressed summaries. The challenge is designing the utility or novelty metric that correlates best with downstream ML performance.
 
@@ -293,7 +293,7 @@ However, the mapping from **bitrate (or log rate) → ML metric (accuracy, F1, r
 
 ---
 
-[5]: https://www.mdpi.com/1999-5903/16/11/403?utm_source=chatgpt.com "Uncertainty-Aware Time Series Anomaly Detection"
+[5]: https://www.mdpi.com/1999-5903/16/11/403?utm_source=chatgpt.com "Uncertainty-Aware time-series Anomaly Detection"
 [6]: https://arxiv.org/html/2507.17221v1?utm_source=chatgpt.com "Dataset Distillation as Data Compression: A Rate-Utility ..."
 [7]: https://www.mdpi.com/2076-3417/10/19/6739?utm_source=chatgpt.com "Compression of Vehicle Trajectories with a Variational ..."
 
