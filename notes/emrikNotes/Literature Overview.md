@@ -64,12 +64,12 @@ Ideas for how to compress neural networks as to make them fit on embedded hardwa
 ### TARNet : Task-Aware Reconstruction for Time-Series Transformer
 
 [Link](https://dl.acm.org/doi/pdf/10.1145/3534678.3539329)
-Perhaps not super relevant to the project but the TARNet works by having a biased autoencoder which reconstructs data based on how important it is for the downstream task. Traditional autoencoders treat all points in the time series equally but this often leads to the decoder reconstructing unnecessary noise. In this model, the reconstruction loss is a combination of MSE and the importance for the timepoint: $$L_TAR = Σ α_t * |X_t - X̂_t|^2$$
+Perhaps not super relevant to the project but the TARNet works by having a biased autoencoder which reconstructs data based on how important it is for the downstream task. Traditional autoencoders treat all points in the time-series equally but this often leads to the decoder reconstructing unnecessary noise. In this model, the reconstruction loss is a combination of MSE and the importance for the timepoint: $$L_TAR = Σ α_t * |X_t - X̂_t|^2$$
 Here the $\alpha_t$ is learned through gradient decent of the downstream task. The total loss will then be: $$L_{total} = L_{task} + λ * L_{TAR}$$
 
 This model balances the ability to reconstruct the timeseries with the ability to perform tasks such as prediction. We could apply this by incorporating the bit stream length in the loss function as to prioritize compression even more. 
 
-### Time Series Compression Survey (2023)
+### time-series Compression Survey (2023)
 
 [Link]([https://doi.org/10.1155/2023/5025255](https://doi.org/10.1155/2023/5025255))
 
@@ -90,7 +90,7 @@ Designs a system which varies the amount of data transmitted based on a adaptive
 
 Very lightweight but could be extended by replacing the Kalman filter with a small learned predictor with a threshold which is optimized for downstream tasks. Also using a codec to compress the data before sending it. 
 
-### Highly Efficient Direct Analytics on Semantic-aware Time Series Data Compression
+### Highly Efficient Direct Analytics on Semantic-aware time-series Data Compression
 [Link](https://arxiv.org/pdf/2503.13246)
 
 The goal of this paper is very similar to ours as they present a model which is able to compress data with focus on semantic preservation. It is however not a neural compression approach as it does not use a model with loss to optimize the compression. They also only test for outlier detection. 

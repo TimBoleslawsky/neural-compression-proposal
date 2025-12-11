@@ -4,7 +4,7 @@ Analyzing relevant industry practices and literature on compression techniques r
 
 \begin{itemize}
     \item From the industry perspective, automotive systems need high-utility ML-ready data under severe bandwidth and computational limits. Existing event-triggered logging schemes introduce sampling bias and maintenance overhead.
-    \item While there exists some exploration of task-aware neural compression techniques for image and video data, there is a notable lack of research focusing on time series data, which is the predominant data type in automotive and IoT applications. This gap is supported by a 2022 survey done on the topic of neural compression \citep{yang2022}.
+    \item While there exists some exploration of task-aware neural compression techniques for image and video data, there is a notable lack of research focusing on time-series data, which is the predominant data type in automotive and IoT applications. This gap is supported by a 2022 survey done on the topic of neural compression \citep{yang2022}.
     \item Most of the reviewed papers fail to address the computational constraints of in-vehicle embedded or IoT systems. The mentioned papers, if they use neural compression, primarily focus on achieving high compression rates while maintaining model performance. Because of this, computationally heavy neural network architectures like recurrent neural networks (RNNs) or transformers were chosen \citep{zheng2023, löhdefink2019, kawawabeaudan2022, liu2024deepdictdeeplearningbased}. 
 \end{itemize}
 
@@ -12,8 +12,8 @@ While task-aware approaches to modern compression techniques like neural compres
 
 \begin{itemize}
     \item \textbf{RQ1:} How can the use of tokenization as an alternative transform and quantization strategy enable the use of more lightweight entropy models?
-    \item \textbf{RQ2:} How well can a compression method, using tokenization be trained for a specific task-type while generalizing well within different tasks of this task-type without specific fine-tuning?
-    \item \textbf{RQ3:} What effects does the use of tokenization as a transform and quantization strategy have on the rate-utility trade-off in the case of time-series data?
+    \item \textbf{RQ2:} What effects does the use of tokenization as a transform and quantization strategy have on the rate-utility trade-off in the case of time-series data?
+    \item \textbf{RQ3:} How well can a compression method, using tokenization, be fine-tuned for a specific task-type while generalizing well across different tasks of this task-type?
 \end{itemize}
 
 
