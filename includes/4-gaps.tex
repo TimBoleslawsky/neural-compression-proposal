@@ -8,7 +8,13 @@ Analyzing relevant industry practices and literature on compression techniques r
     \item Most of the reviewed papers fail to address the computational constraints of in-vehicle embedded or IoT systems. The mentioned papers, if they use neural compression, primarily focus on achieving high compression rates while maintaining model performance. Because of this, computationally heavy neural network architectures like recurrent neural networks (RNNs) or transformers were chosen \citep{zheng2023, löhdefink2019, kawawabeaudan2022, liu2024deepdictdeeplearningbased}. 
 \end{itemize}
 
-While task-aware approaches to modern compression techniques like neural compression have shown promising advancements in balancing the rate-utility trade-off, there remains a significant gap in analyzing their effects on time-series data, specifically in vehicular contexts, where computational resources and bandwidth are often constrained. A lightweight, task-aware compression method for automotive time-series data is therefore needed.
+While task-aware approaches to modern compression techniques like neural compression have shown promising advancements in balancing the rate-utility trade-off, there remains a significant gap in analyzing their effects on time series data, specifically in vehicular contexts, where computational resources and bandwidth are often constrained. A lightweight, task-aware compression method for automotive time-series data is therefore needed. Based on the existing literature there are three relevant research questions which this project aims to answer.
+
+\begin{itemize}
+    \item \textbf{RQ1:} How can the use of tokenization as an alternative transform and quantization strategy enable the use of more lightweight entropy models?
+    \item \textbf{RQ2:} How well can a compression method, using tokenization be trained for a specific task-type while generalizing well within different tasks of this task-type without specific fine-tuning?
+    \item \textbf{RQ3:} What effects does the use of tokenization as a transform and quantization strategy have on the rate-utility trade-off in the case of time-series data?
+\end{itemize}
 
 
 
