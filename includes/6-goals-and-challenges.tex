@@ -1,9 +1,9 @@
 \section{Goals and Challenges}\label{sec:goals-and-challenges}
 
-\textbf{Goals:} In the proposed work, the goal is to determine whether using tokenization as an alternative to common transformation and quantization methods enables the subsequent entropy modeling to use a smaller architecture while still achieving similar results in compression rate and utility to those of traditional neural compression implementations. Instead of compressing raw sensor values, this approach would aim to learn a discrete vocabulary of prototypical temporal patterns that are maximally informative for downstream tasks. This approach is expected to give us two distinct advantages: 
+\textbf{Goals:} In the proposed work, the goal is to determine whether using tokenization as an alternative to common transformation and quantization methods enables more efficient compression while still achieving similar results in compression rate and utility to those of traditional neural compression implementations. Instead of compressing raw sensor values, this approach would aim to learn a discrete vocabulary of the temporal patterns that are maximally informative for downstream tasks. This approach is expected to give us two distinct advantages: 
 
 \begin{itemize}
-    \item better computational efficiency compared to RNN- and transformer-based neural compression methods.
+    \item better computational efficiency compared to RNN- and Transformer-based neural compression methods.
     \item an interpretable intermediate layer of tokens instead of continuous values.
 \end{itemize}
 
