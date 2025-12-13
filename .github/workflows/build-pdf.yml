@@ -1,44 +1,43 @@
-name: Build and publish PDF
-
-on:
-  push:
-    branches: [ main ]
+name: Build LaTeX PDF
 
 permissions:
   contents: write
 
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  build-and-publish:
+  build:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           persist-credentials: true
 
-      - name: Build PDF with latexmk
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: proposal.tex
-          args: -pdf -interaction=nonstopmode
+      - name: Install LaTeX
+        run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended latexmk
 
-      - name: Install poppler-utils (for pdftoppm -> PNG)
-        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Build PDF
+        run: latexmk -pdf -interaction=nonstopmode proposal.tex
 
-      - name: Make PNG previews (pages 1-2)
+      - name: Save PDF into build/ and commit to repo
         run: |
-          pdftoppm -png -f 1 -l 2 proposal.pdf proposal || true
-
-      - name: Commit PDF and preview back to repo (if changed)
-        run: |
+          mkdir -p build
+          if [ -f proposal.pdf ]; then
+            mv proposal.pdf build/proposal.pdf
+          else
+            echo "proposal.pdf not found"; exit 1
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A proposal.pdf proposal-1.png proposal-2.png || true
+          git add -A build/proposal.pdf || true
           if ! git diff --cached --quiet; then
-            git commit -m "ci: update built proposal.pdf and preview"
+            git commit -m "ci: add/update built proposal.pdf"
             git push origin HEAD:main
           else
             echo "No changes to commit"
           fi
-
