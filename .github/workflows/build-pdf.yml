@@ -21,7 +21,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: proposal.tex
-          latexmk-args: -pdf -interaction=nonstopmode proposal.tex
+          args: -pdf -interaction=nonstopmode
 
       - name: Prepare output directory
         run: |
