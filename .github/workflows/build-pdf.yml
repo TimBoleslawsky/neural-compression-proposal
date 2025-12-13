@@ -31,17 +31,17 @@ jobs:
       - name: Install poppler-utils (for pdftoppm -> PNG)
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
 
-      - name: Make PNG preview (first page)
+      - name: Make PNG previews (pages 1-2)
         run: |
           if [ -f build/proposal.pdf ]; then
-            pdftoppm -png -f 1 -singlefile build/proposal.pdf build/proposal || true
+            pdftoppm -png -f 1 -l 2 build/proposal.pdf build/proposal || true
           fi
 
       - name: Commit PDF and preview back to repo (if changed)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A build/proposal.pdf build/proposal.png || true
+          git add -A build/proposal.pdf build/proposal-1.png build/proposal-2.png || true
           if ! git diff --cached --quiet; then
             git commit -m "ci: update built proposal.pdf and preview"
             git push origin HEAD:main
